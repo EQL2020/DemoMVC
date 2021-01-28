@@ -1,5 +1,6 @@
 ﻿using DemoMVC.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -20,6 +21,7 @@ namespace DemoMVC.Controllers
 
         public IActionResult Index()
         {
+            HttpContext.Session.SetInt32("reponseALaQuestion", 42);
             return View();
         }
 

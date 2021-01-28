@@ -1,10 +1,12 @@
 ﻿using DemoMVC.DAO;
 using DemoMVC.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+
 
 namespace DemoMVC.Controllers
 {
@@ -12,13 +14,14 @@ namespace DemoMVC.Controllers
     {
         public IActionResult Ajouter()
         {
+            ViewBag.reponseMagique = HttpContext.Session.GetInt32("reponseALaQuestion");
             return View();
         }
 
         public IActionResult Liste()
         {
             List<Personne> liste = new PersonneDAO().GetAll();
-
+            
             ViewBag.Personnes = liste;
 
             return View();
